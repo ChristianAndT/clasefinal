@@ -107,3 +107,28 @@ if __name__ == "__main__":
     create_database_and_table()
     insert_structured_logs()
     save_unstructured_logs()
+
+
+def mostrar_registros():
+    try:
+        conn = psycopg2.connect(
+            database="cybersecurity_logs",
+            user="postgres",
+            password="postgres",
+            host="localhost",
+            port="5432"
+        )
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM structured_logs;")
+        rows = cursor.fetchall()
+
+        for row in rows:
+            print(row)
+
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        print(f"❌ Error al mostrar registros: {e}")
+
+# Al final del script
+mostrar_registros()
