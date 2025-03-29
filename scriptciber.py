@@ -102,13 +102,6 @@ def save_unstructured_logs():
     except Exception as e:
         print(f"❌ Error al guardar logs no estructurados: {e}")
 
-# Ejecutar todo
-if __name__ == "__main__":
-    create_database_and_table()
-    insert_structured_logs()
-    save_unstructured_logs()
-
-
 def mostrar_registros():
     try:
         conn = psycopg2.connect(
@@ -130,5 +123,9 @@ def mostrar_registros():
     except Exception as e:
         print(f"❌ Error al mostrar registros: {e}")
 
-# Al final del script
-mostrar_registros()
+# Ejecucion total!
+if __name__ == "__main__":
+    create_database_and_table()
+    insert_structured_logs()
+    save_unstructured_logs()
+    mostrar_registros()
